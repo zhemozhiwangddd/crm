@@ -6,4 +6,5 @@ package com.zhemo.domain;
  */
 public class Student {
     private String id;
+    private String name;
 }
