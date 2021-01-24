@@ -39,7 +39,9 @@
         <!--table指定每个表的生成策略-->
         <!--tableName->数据库中创建的表名
             domainObjectName->要创建的java bean类名-->
-        <table tableName="tbl_user" domainObjectName="User"></table>
+        <table tableName="tbl_dic_type" domainObjectName="DicType"></table>
+        <table tableName="tbl_dic_value" domainObjectName="DicValue"></table>
+
     </context>
 
 </generatorConfiguration>

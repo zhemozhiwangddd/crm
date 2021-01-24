@@ -8,8 +8,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <base href="<%=APP_PATH%>">
+    <meta charset="UTF-8">
     <link href="jquery/bootstrap_3.3.0/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
     <script type="text/javascript" src="jquery/jquery-1.11.1-min.js"></script>
     <script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
@@ -50,6 +50,11 @@
 </div>
 
 <script type="text/javascript">
+
+    //使login.jsp始终在顶层窗口中打开
+    if(window.top!=window){
+        window.top.location=window.location;
+    }
 
     $(function () {
         //进入网页，用户名上直接给个焦点事件

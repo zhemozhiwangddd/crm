@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhemo.workbench.dao.ActivityRemarkMapper">
+  <resultMap id="BaseResultMap" type="com.zhemo.workbench.domain.ActivityRemark">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="note_Content" jdbcType="VARCHAR" property="noteContent" />
+    <result column="create_Time" jdbcType="CHAR" property="createTime" />
+    <result column="create_By" jdbcType="VARCHAR" property="createBy" />
+    <result column="edit_Time" jdbcType="CHAR" property="editTime" />
+    <result column="edit_By" jdbcType="VARCHAR" property="editBy" />
+    <result column="edit_Flag" jdbcType="CHAR" property="editFlag" />
+    <result column="activity_Id" jdbcType="CHAR" property="activityId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, note_Content, create_Time, create_By, edit_Time, edit_By, edit_Flag, activity_Id
+  </sql>
+  <select id="selectByExample" parameterType="com.zhemo.workbench.domain.ActivityRemarkExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tbl_activity_remark
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_activity_remark
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_activity_remark
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zhemo.workbench.domain.ActivityRemarkExample">
+    delete from tbl_activity_remark
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zhemo.workbench.domain.ActivityRemark">
+    insert into tbl_activity_remark (id, note_Content, create_Time, 
+      create_By, edit_Time, edit_By, 
+      edit_Flag, activity_Id)
+    values (#{id,jdbcType=CHAR}, #{noteContent,jdbcType=VARCHAR}, #{createTime,jdbcType=CHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{editTime,jdbcType=CHAR}, #{editBy,jdbcType=VARCHAR}, 
+      #{editFlag,jdbcType=CHAR}, #{activityId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhemo.workbench.domain.ActivityRemark">
+    insert into tbl_activity_remark
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="noteContent != null">
+        note_Content,
+      </if>
+      <if test="createTime != null">
+        create_Time,
+      </if>
+      <if test="createBy != null">
+        create_By,
+      </if>
+      <if test="editTime != null">
+        edit_Time,
+      </if>
+      <if test="editBy != null">
+        edit_By,
+      </if>
+      <if test="editFlag != null">
+        edit_Flag,
+      </if>
+      <if test="activityId != null">
+        activity_Id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="noteContent != null">
+        #{noteContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null">
+        #{editTime,jdbcType=CHAR},
+      </if>
+      <if test="editBy != null">
+        #{editBy,jdbcType=VARCHAR},
+      </if>
+      <if test="editFlag != null">
+        #{editFlag,jdbcType=CHAR},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zhemo.workbench.domain.ActivityRemarkExample" resultType="java.lang.Long">
+    select count(*) from tbl_activity_remark
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update tbl_activity_remark
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.noteContent != null">
+        note_Content = #{record.noteContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_Time = #{record.createTime,jdbcType=CHAR},
+      </if>
+      <if test="record.createBy != null">
+        create_By = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.editTime != null">
+        edit_Time = #{record.editTime,jdbcType=CHAR},
+      </if>
+      <if test="record.editBy != null">
+        edit_By = #{record.editBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.editFlag != null">
+        edit_Flag = #{record.editFlag,jdbcType=CHAR},
+      </if>
+      <if test="record.activityId != null">
+        activity_Id = #{record.activityId,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update tbl_activity_remark
+    set id = #{record.id,jdbcType=CHAR},
+      note_Content = #{record.noteContent,jdbcType=VARCHAR},
+      create_Time = #{record.createTime,jdbcType=CHAR},
+      create_By = #{record.createBy,jdbcType=VARCHAR},
+      edit_Time = #{record.editTime,jdbcType=CHAR},
+      edit_By = #{record.editBy,jdbcType=VARCHAR},
+      edit_Flag = #{record.editFlag,jdbcType=CHAR},
+      activity_Id = #{record.activityId,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhemo.workbench.domain.ActivityRemark">
+    update tbl_activity_remark
+    <set>
+      <if test="noteContent != null">
+        note_Content = #{noteContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_Time = #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="createBy != null">
+        create_By = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null">
+        edit_Time = #{editTime,jdbcType=CHAR},
+      </if>
+      <if test="editBy != null">
+        edit_By = #{editBy,jdbcType=VARCHAR},
+      </if>
+      <if test="editFlag != null">
+        edit_Flag = #{editFlag,jdbcType=CHAR},
+      </if>
+      <if test="activityId != null">
+        activity_Id = #{activityId,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhemo.workbench.domain.ActivityRemark">
+    update tbl_activity_remark
+    set note_Content = #{noteContent,jdbcType=VARCHAR},
+      create_Time = #{createTime,jdbcType=CHAR},
+      create_By = #{createBy,jdbcType=VARCHAR},
+      edit_Time = #{editTime,jdbcType=CHAR},
+      edit_By = #{editBy,jdbcType=VARCHAR},
+      edit_Flag = #{editFlag,jdbcType=CHAR},
+      activity_Id = #{activityId,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -14,7 +14,7 @@ public class Msg {
     private String status;//描述处理结果
     private Map<String, Object> extendInfo = new HashMap<>();//存放额外的信息
 
-    private Msg(){};
+    private Msg(){}
 
     private Msg(String code, String status){
         this.code = code;
@@ -43,6 +43,10 @@ public class Msg {
     public Msg setCode(String code) {
         this.code = code;
         return this;
+    }
+
+    public Map<String, Object> getExtendInfo() {
+        return extendInfo;
     }
 
     public String getStatus() {

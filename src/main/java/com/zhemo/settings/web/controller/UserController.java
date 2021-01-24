@@ -32,7 +32,6 @@ public class UserController {
     public Msg login(String name, String loginPwd, HttpServletRequest req, HttpServletResponse resp) throws LoginException, IOException {
         loginPwd = MD5Util.getMD5(loginPwd);
         String ip = req.getRemoteAddr();
-        System.out.println(ip);
         //如果出现异常，转到处理异常的方法中
         User loginUser = userService.login(name, loginPwd, ip);
         //存到session域中

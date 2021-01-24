@@ -14,13 +14,14 @@
         <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
     <!--视图解析器-->
-<!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-<!--        <property name="prefix" value=""/>-->
-<!--        <property name="suffix" value=""/>-->
-<!--    </bean>-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/workbench/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
 
     <!--静态资源访问的配置-->
     <mvc:default-servlet-handler/>
     <!--注解驱动-->
     <mvc:annotation-driven/>
+
 </beans>
