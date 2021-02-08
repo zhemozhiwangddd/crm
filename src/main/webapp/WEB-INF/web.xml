@@ -4,6 +4,10 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <!--设置session超时时间-->
+    <session-config>
+        <session-timeout>9999999</session-timeout>
+    </session-config>
     <!--配置监听器，在工程启动时创建spring容器-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -11,6 +15,9 @@
     </context-param>
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.zhemo.web.listener.SysInitListener</listener-class>
     </listener>
 
     <!--配置中央调度器，在工程启动时创建springmvc容器（在init方法中）-->

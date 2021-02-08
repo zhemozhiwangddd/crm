@@ -127,7 +127,27 @@ public class Customer {
         return address;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id='" + id + '\'' +
+                ", owner='" + owner + '\'' +
+                ", name='" + name + '\'' +
+                ", website='" + website + '\'' +
+                ", phone='" + phone + '\'' +
+                ", createby='" + createby + '\'' +
+                ", createtime='" + createtime + '\'' +
+                ", editby='" + editby + '\'' +
+                ", edittime='" + edittime + '\'' +
+                ", contactsummary='" + contactsummary + '\'' +
+                ", nextcontacttime='" + nextcontacttime + '\'' +
+                ", description='" + description + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
     public void setAddress(String address) {
+
         this.address = address == null ? null : address.trim();
     }
 }

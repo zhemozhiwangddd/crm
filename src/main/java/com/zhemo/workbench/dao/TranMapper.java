@@ -3,6 +3,8 @@ package com.zhemo.workbench.dao;
 import com.zhemo.workbench.domain.Tran;
 import com.zhemo.workbench.domain.TranExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface TranMapper {
@@ -27,4 +29,8 @@ public interface TranMapper {
     int updateByPrimaryKeySelective(Tran record);
 
     int updateByPrimaryKey(Tran record);
+
+    Tran selectDetailByPrimaryKey(String id);
+
+    List<Map<String, Object>> selectCountGroupByStageName();
 }

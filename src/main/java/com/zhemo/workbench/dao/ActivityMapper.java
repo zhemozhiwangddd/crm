@@ -31,4 +31,10 @@ public interface ActivityMapper {
     int updateByPrimaryKey(Activity record);
 
     Activity selectActivityDetailByPrimaryKey(String id);
+
+    List<Activity> selectActivityByCId(String id);
+
+    List<Activity> selectActivityByANameAndCId(@Param(value = "aName") String aName, @Param(value = "cId") String cId);
+
+    List<Activity> selectActivityANameLike(String aName);
 }

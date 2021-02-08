@@ -1,6 +1,8 @@
 package com.zhemo.test;
 
+import com.zhemo.settings.dao.DicTypeMapper;
 import com.zhemo.settings.dao.UserMapper;
+import com.zhemo.settings.domain.DicType;
 import com.zhemo.settings.domain.User;
 import com.zhemo.workbench.dao.ActivityMapper;
 import com.zhemo.workbench.dao.ActivityRemarkMapper;
@@ -11,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestConstructor;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
@@ -34,6 +37,9 @@ public class MapperTest {
 
     @Autowired
     ClueMapper clueMapper;
+
+    @Autowired
+    DicTypeMapper dicTypeMapper;
 
     @Test
     public void selectTest(){
@@ -63,6 +69,14 @@ public class MapperTest {
         List<Clue> clues = clueMapper.selectByExample(null);
         for (Clue clue : clues) {
             System.out.println(clue);
+        }
+    }
+
+    @Test
+    public void selectDicTypeTest(){
+        List<DicType> dicTypes = dicTypeMapper.selectByExample(null);
+        for (DicType dicType : dicTypes) {
+            System.out.println(dicType);
         }
     }
 

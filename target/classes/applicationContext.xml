@@ -20,6 +20,7 @@
         <property name="password" value="${jdbc.password}"/>
         <property name="url" value="${jdbc.url}"/>
     </bean>
+
     <!--创建一个sqlSessionFactory用来生成sqlSession-->
     <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
         <property name="dataSource" ref="dataSource"/>

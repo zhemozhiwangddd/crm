@@ -37,6 +37,16 @@ public class Tran {
 
     private String nextcontacttime;
 
+    private String possibility;
+
+    public String getPossibility() {
+        return possibility;
+    }
+
+    public void setPossibility(String possibility) {
+        this.possibility = possibility;
+    }
+
     public String getId() {
         return id;
     }
@@ -179,5 +189,30 @@ public class Tran {
 
     public void setNextcontacttime(String nextcontacttime) {
         this.nextcontacttime = nextcontacttime == null ? null : nextcontacttime.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Tran{" +
+                "id='" + id + '\'' +
+                ", owner='" + owner + '\'' +
+                ", money='" + money + '\'' +
+                ", name='" + name + '\'' +
+                ", expecteddate='" + expecteddate + '\'' +
+                ", customerid='" + customerid + '\'' +
+                ", stage='" + stage + '\'' +
+                ", type='" + type + '\'' +
+                ", source='" + source + '\'' +
+                ", activityid='" + activityid + '\'' +
+                ", contactsid='" + contactsid + '\'' +
+                ", createby='" + createby + '\'' +
+                ", createtime='" + createtime + '\'' +
+                ", editby='" + editby + '\'' +
+                ", edittime='" + edittime + '\'' +
+                ", description='" + description + '\'' +
+                ", contactsummary='" + contactsummary + '\'' +
+                ", nextcontacttime='" + nextcontacttime + '\'' +
+                ", possibility='" + possibility + '\'' +
+                '}';
     }
 }

@@ -15,6 +15,16 @@ public class TranHistory {
 
     private String tranid;
 
+    private String possibility;
+
+    public String getPossibility() {
+        return possibility;
+    }
+
+    public void setPossibility(String possibility) {
+        this.possibility = possibility;
+    }
+
     public String getId() {
         return id;
     }
@@ -69,5 +79,19 @@ public class TranHistory {
 
     public void setTranid(String tranid) {
         this.tranid = tranid == null ? null : tranid.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "TranHistory{" +
+                "id='" + id + '\'' +
+                ", stage='" + stage + '\'' +
+                ", money='" + money + '\'' +
+                ", expecteddate='" + expecteddate + '\'' +
+                ", createtime='" + createtime + '\'' +
+                ", createby='" + createby + '\'' +
+                ", tranid='" + tranid + '\'' +
+                ", possibility='" + possibility + '\'' +
+                '}';
     }
 }

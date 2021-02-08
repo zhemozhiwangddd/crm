@@ -84,13 +84,47 @@
     <sql id="Activity_Detail">
     a.id, a.name, u.name as owner, a.start_date, a.end_date, a.cost, a.create_by,a.create_time, a.edit_time, a.edit_by, a.description
     </sql>
+    <sql id="Activity_clue_relation_list">
+    car.id, a.name, u.name as owner, a.start_date, a.end_date, a.cost, a.create_by,a.create_time, a.edit_time, a.edit_by, a.description
+    </sql>
+    <!--利用aName进行模糊查询-->
+    <select id="selectActivityANameLike" resultType="com.zhemo.workbench.domain.Activity">
+        select
+        <include refid="Activity_With_User"/>
+        from tbl_activity a
+        join tbl_user u
+        on a.owner = u.id
+        where a.name like '%' #{aName} '%'
+    </select>
+    <!--利用clueId和aName进行模糊查询-->
+    <select id="selectActivityByANameAndCId" resultType="com.zhemo.workbench.domain.Activity">
+        select
+        <include refid="Activity_With_User"/>
+        from tbl_activity a
+        join tbl_user u
+        on a.owner = u.id
+        where a.name like '%' #{aName} '%' and a.id not in(
+        select activityId from tbl_clue_activity_relation where clueId = #{cId}
+        )
+    </select>
+    <!--利用clueId获取对应的Activity（利用中间表关联，多对多）-->
+    <select id="selectActivityByCId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Activity_clue_relation_list"/>
+        from tbl_activity a
+         join tbl_user u
+        on a.owner = u.id
+         join tbl_clue_activity_relation car
+        on a.id = car.activityId
+        where car.clueId = #{id}
+    </select>
     <!--多表联查，activity和user表联查，用于分页操作-->
     <select id="selectActivityWithUserByCondition" parameterType="com.zhemo.workbench.domain.Activity"
             resultMap="BaseResultMap">
         select
         <include refid="Activity_With_User"/>
         from tbl_activity a
-        left join tbl_user u
+         join tbl_user u
         on u.id = a.owner
         <where>
 
@@ -117,7 +151,7 @@
         select
         <include refid="Activity_Detail"/>
         from tbl_activity a
-        left join tbl_user u
+         join tbl_user u
         on a.owner = u.id
         where a.id = #{id,jdbcType=CHAR}
     </select>

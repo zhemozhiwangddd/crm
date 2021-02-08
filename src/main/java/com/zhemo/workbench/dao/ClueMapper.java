@@ -20,6 +20,8 @@ public interface ClueMapper {
 
     Clue selectByPrimaryKey(String id);
 
+    Clue selectDetailByPrimaryKey(String id);
+
     int updateByExampleSelective(@Param("record") Clue record, @Param("example") ClueExample example);
 
     int updateByExample(@Param("record") Clue record, @Param("example") ClueExample example);
